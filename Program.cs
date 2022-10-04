@@ -4,12 +4,16 @@ namespace Bony
 
     class main 
     {
+        public static void Log(String s)
+        {
+            Console.WriteLine(s);
+        }
 
         static void Main(string[] args)
         {
             if (args.Length == 0)
             {
-                Console.WriteLine("You need to specify a dir (+ file)");
+                Log("You need to specify a dir (+ file)");
 
             }
             else
@@ -19,7 +23,7 @@ namespace Bony
                 string path = args[0];
                 if (string.IsNullOrEmpty(path))
                 {
-                    Console.WriteLine("You need to specify a dir (+ file)");
+                    Log("You need to specify a dir (+ file)");
                 }
                 else
                 {
@@ -48,7 +52,7 @@ namespace Bony
                         File.Create(pathstring + "/" + paths[^1], 0);
                     }
 
-                    Console.WriteLine($"Directory (+ Files) created successfully! {pathstring}");
+                    Log($"Directory (+ Files) created successfully! {pathstring}");
                 }
             }
         }
