@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bony", "Bony.csproj", "{E88D0B01-1E1F-4289-AD2F-2C5B37F8B537}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E88D0B01-1E1F-4289-AD2F-2C5B37F8B537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E88D0B01-1E1F-4289-AD2F-2C5B37F8B537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E88D0B01-1E1F-4289-AD2F-2C5B37F8B537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E88D0B01-1E1F-4289-AD2F-2C5B37F8B537}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
