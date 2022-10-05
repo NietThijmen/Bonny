@@ -11,28 +11,37 @@
             }
             string path = args[0];
             string[] paths = path.Split("/");
-            int i = 0;
+            int IsOnlyFileOrFileWithADiir = 0;
             if (paths[^1].Contains('.'))
             {
-                i = 1;
+                IsOnlyFileOrFileWithADiir = 1;
             }
             if (paths.Length > 1)
             {
                 String pathstring = "";
 
-                for (int index = 0; index < paths.Length - i; index++)
+                for (int index = 0; index < paths.Length - IsOnlyFileOrFileWithADiir; index++)
                 {
                     string t = paths[index];
                     pathstring += t;
-                    if (!Directory.Exists(pathstring))
+                    try
                     {
-                        Directory.CreateDirectory(pathstring);
+                        if (!Directory.Exists(pathstring))
+                        {
+                            Directory.CreateDirectory(pathstring);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Path cannot begin by / or ./");
+                        Console.WriteLine("Correct usage is path/");
+                        Console.WriteLine("Not /path/");
                     }
 
                     pathstring += "/";
                 }
 
-                if (i == 1)
+                if (IsOnlyFileOrFileWithADiir == 1)
                 {
                     File.Create($"{pathstring}{paths[paths.Length - 1]}", 0);
                 }
