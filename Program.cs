@@ -14,6 +14,8 @@ namespace Bony
                 return;
             }
             string path = args[0];
+
+
             string[] paths = path.Split("/");
             int isOnlyFileOrFileWithADir = 0;
             if (paths[^1].Contains('.'))
@@ -22,17 +24,17 @@ namespace Bony
             }
             if (paths.Length > 1)
             {
-                String pathstring = "";
+                String PathString = "";
 
                 for (int index = 0; index < paths.Length - isOnlyFileOrFileWithADir; index++)
                 {
                     string t = paths[index];
-                    pathstring += t;
+                    PathString += t;
                     try
                     {
-                        if (!Directory.Exists(pathstring))
+                        if (!Directory.Exists(PathString))
                         {
-                            CreateDirectory(pathstring);
+                            CreateDirectory(PathString);
                         }
                     }
                     catch (Exception)
@@ -42,12 +44,12 @@ namespace Bony
                         WriteLine("Not /path/");
                     }
 
-                    pathstring += "/";
+                    PathString += "/";
                 }
 
                 if (isOnlyFileOrFileWithADir == 1)
                 {
-                    Create($"{pathstring}{paths[^1]}", 0);
+                    Create($"{PathString}{paths[^1]}", 0);
                 }
             }
             else
