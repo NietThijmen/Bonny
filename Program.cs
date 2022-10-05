@@ -1,58 +1,47 @@
-﻿
-namespace Bony
+﻿namespace Bony
 {
-
-    class main 
+    class main
     {
-        public static void Log(String s)
-        {
-            Console.WriteLine(s);
-        }
-
         static void Main(string[] args)
         {
             if (args.Length == 0)
             {
-                Log("You need to specify a dir (+ file)");
+                Console.WriteLine("Please add a directory (+file)");
+                return;
+            }
+            string path = args[0];
+            string[] paths = path.Split("/");
+            int i = 0;
+            if (paths[^1].Contains('.'))
+            {
+                i = 1;
+            }
+            if (paths.Length > 1)
+            {
+                String pathstring = "";
 
+                for (int index = 0; index < paths.Length - i; index++)
+                {
+                    string t = paths[index];
+                    pathstring += t;
+                    if (!Directory.Exists(pathstring))
+                    {
+                        Directory.CreateDirectory(pathstring);
+                    }
+
+                    pathstring += "/";
+                }
+
+                if (i == 1)
+                {
+                    File.Create($"{pathstring}{paths[paths.Length - 1]}", 0, FileOptions.Asynchronous);
+                }
             }
             else
             {
-
-
-                string path = args[0];
-                if (string.IsNullOrEmpty(path))
+                if (paths[paths.Length - 1].Contains('.'))
                 {
-                    Log("You need to specify a dir (+ file)");
-                }
-                else
-                {
-
-
-                    string[] paths = path.Split('/');
-                    String pathstring = "";
-                    int amount = paths[paths.Length - 1].Contains('.') ? 1 : 0;
-                    for (var i = 0; i < paths.Length - amount; i++)
-                    {
-
-
-                        pathstring += paths[i];
-                        if (!Directory.Exists(pathstring))
-                        {
-                            Directory.CreateDirectory(pathstring);
-                        }
-
-                        pathstring += "/";
-
-
-
-                    }
-                    if (paths[paths.Length - 1].Contains('.'))
-                    {
-                        File.Create(pathstring + "/" + paths[^1], 0);
-                    }
-
-                    Log($"Directory (+ Files) created successfully! {pathstring}");
+                    File.Create($"{Directory.GetCurrentDirectory()}/{paths[paths.Length - 1]}", 0, FileOptions.Asynchronous);
                 }
             }
         }
