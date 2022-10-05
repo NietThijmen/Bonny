@@ -34,15 +34,12 @@
 
                 if (i == 1)
                 {
-                    File.Create($"{pathstring}{paths[paths.Length - 1]}", 0, FileOptions.Asynchronous);
+                    File.Create($"{pathstring}{paths[paths.Length - 1]}", 0);
                 }
             }
             else
             {
-                if (paths[paths.Length - 1].Contains('.'))
-                {
-                    File.Create($"{Directory.GetCurrentDirectory()}/{paths[paths.Length - 1]}", 0, FileOptions.Asynchronous);
-                }
+                File.Create($"{Directory.GetCurrentDirectory()}/{paths[paths.Length - 1]}", 0);
             }
         }
     }
