@@ -14,7 +14,7 @@ namespace Bony
                 return;
             }
             string path = args[0];
-
+            path = path.Replace("\\", "/");
 
             string[] paths = path.Split("/");
             int isOnlyFileOrFileWithADir = 0;
